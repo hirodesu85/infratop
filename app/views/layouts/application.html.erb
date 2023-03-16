@@ -11,13 +11,13 @@
   </head>
 
   <body>
-    <header>
+    <header style = "border-bottom: 3px solid;">
       <% if request.fullpath.include? "/admin" %>
         <ul>
           <% if admin_signed_in? %>
-            <li><%= link_to "LOGO", admin_path%></li>
+            <li><%= link_to "LOGO", admin_path %></li>
             <li>商品一覧</li>
-            <li>会員一覧</li>
+            <li><%= link_to "会員一覧", admin_customers_path %></li>
             <li>注文履歴一覧</li>
             <li>ジャンル一覧</li>
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
