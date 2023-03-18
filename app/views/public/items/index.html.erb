@@ -1,0 +1,12 @@
+<h1>商品一覧</h1>
+<div style = "display:flex; flex-wrap: wrap;">
+  <% @items.each do |item| %>
+    <% if item.is_sold == true%>
+      <div>
+        <%= image_tag item.image, size: "300x300" %>
+        <h2><%= item.name %></h2>
+        <h2>¥<%= item.price %></h2>
+      </div>
+    <% end %>
+  <% end %>
+</div>

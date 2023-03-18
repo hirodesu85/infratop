@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
     
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
   devise_for :customers, skip: [:password], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
@@ -19,6 +14,7 @@ Rails.application.routes.draw do
     patch '/mypage' => 'customers#update'
     get '/mypage/confirm' => 'customers#confirm'
     patch 'mypage/destroy' => 'customers#destroy'
+    resources :items, only: [:index, :show]
   end
   
   
@@ -29,6 +25,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     resources :customers, only: [:index]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
