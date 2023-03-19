@@ -8,4 +8,11 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :is_sold, inclusion: { in: [true, false] }
   
+  
+  def add_tax
+    (self.price * 1.10).round
+  end
+  
 end
+
+
