@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-    
+
   devise_for :customers, skip: [:password], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
   root to: 'public/homes#top'
-  
-  
+
+
   scope module: :public do
     get '/mypage' => 'customers#show'
     get '/mypage/edit' => 'customers#edit'
@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     get '/mypage/confirm' => 'customers#confirm'
     patch 'mypage/destroy' => 'customers#destroy'
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete '/cart_items' => 'cart_items#destroy_all', as: :destroy_all_cart_items
   end
-  
-  
+
+
   devise_for :admins, path: 'admin', skip: [:registrations, :password], controllers: {
     sessions: "admin/sessions"
   }
