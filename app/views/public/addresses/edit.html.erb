@@ -1,0 +1,26 @@
+<h1>配送先編集</h1>
+
+<div style = "margin-top: 20px;">
+  <%= form_with model: @address do |f| %>
+
+    <div>
+      <%= f.label :postcode, "郵便番号（ハイフンなし）" %><br />
+      <%= f.text_field :postcode %>
+    </div>
+
+    <div>
+      <%= f.label :address, "住所" %><br />
+      <%= f.text_field :address %>
+    </div>
+
+    <div>
+      <%= f.label :name, "宛名" %><br />
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.submit "変更内容を保存"%>
+    </div>
+
+  <% end %>
+</div>
