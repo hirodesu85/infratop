@@ -69,5 +69,5 @@
   <%= f.hidden_field :postage %>
   <%= f.hidden_field :billing_amount %>
   <%= f.hidden_field :payment_method %>
-  <%= f.submit "注文を確定する"%>
+  <%= f.submit "注文を確定する", "data-confirm" => "注文を確定しますか？"%>
 <% end %>

@@ -14,6 +14,12 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     address_option = params[:order][:address_option]
+    if address_option == nil
+      @order = Order.new
+      @customer = current_customer
+      render :new
+    end
+    
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
