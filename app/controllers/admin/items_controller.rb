@@ -15,6 +15,12 @@ class Admin::ItemsController < ApplicationController
       render :new
     end
   end
+  
+  def search
+    @items = Item.search(params[:keyword])
+    @keyword = params[:keyword]
+    render :index
+  end
 
   def show
   end

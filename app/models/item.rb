@@ -15,6 +15,10 @@ class Item < ApplicationRecord
     (self.price * 1.10).round
   end
   
+  def self.search(keyword)
+    where(["name like? OR explanation like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+  
 end
 
 
