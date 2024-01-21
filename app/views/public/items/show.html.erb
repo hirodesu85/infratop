@@ -1,0 +1,21 @@
+<div style = "display: flex;">
+    <div style = "margin: 10px;">
+        <%= image_tag @item.image, size: "300x300" %>
+    </div>
+    
+    <div style = "margin-left: 30px;">
+        <h1><%= @item.name %></h1>
+        <p><%= @item.explanation %></p>
+        <h2>¥<%= @item.add_tax %>（税込）</h2>
+        
+        <%= form_with model:@cart_item do |f| %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <table>
+                <tr>
+                    <td><%= f.select :amount, *[1..10], prompt: "個数選択" %></td>
+                    <td><%= f.submit "カートに入れる" %></td>
+                </tr>
+            </table>
+        <% end %>
+    </div>
+</div>

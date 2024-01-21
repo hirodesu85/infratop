@@ -11,6 +11,51 @@
   </head>
 
   <body>
+    <header style = "border-bottom: 3px solid;">
+      <% if request.fullpath.include? "/admin" %>
+        <div style = "display: flex;">
+          <ul>
+            <% if admin_signed_in? %>
+              <li><%= link_to "LOGO", admin_path %></li>
+              <li><%= link_to "商品一覧", admin_items_path %></li>
+              <li><%= link_to "会員一覧", admin_customers_path %></li>
+              <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
+              <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "LOGO", root_path %></li>
+              <li>About</li>
+              <li><%= link_to "商品一覧", items_path %></li>
+              <li><%= link_to "新規登録", new_customer_registration_path %></li>
+              <li><%= link_to "ログイン", new_customer_session_path %></li>
+            <% end %>
+          </ul>
+          
+          <div style = "margin-top: 20px; margin-left: 100px;">
+            <%= form_with url: admin_search_path, method: :get do |f| %>
+              <%= f.text_field :keyword, value: @keyword %>
+              <%= f.submit "検索" %>
+            <% end %>
+          </div>
+        </div>
+      
+      <% else %>
+        <ul>
+          <% if customer_signed_in? %>
+            <li><%= link_to "LOGO", root_path%></li>
+            <li><%= link_to "マイページ", mypage_path %></li>
+            <li><%= link_to "商品一覧", items_path %></li>
+            <li><%= link_to "カート", cart_items_path %></li>
+            <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "LOGO", root_path %></li>
+            <li><%= link_to "商品一覧", items_path %></li>
+            <li><%= link_to "新規登録", new_customer_registration_path %></li>
+            <li><%= link_to "ログイン", new_customer_session_path %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
