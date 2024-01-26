@@ -3,11 +3,14 @@ FROM ruby:3.1.2
 # ライブラリのインストール
 RUN apt update -qq &&  apt install -y git imagemagick libmagick++-dev sqlite3
 
-# nodejs 16のインストール
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt install -y nodejs
-
+# nodejs 18のインストール
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
+apt-get install -y nodejs
 # yarnのインストール
 RUN npm install n -g && npm install -g yarn
+
+# Node.jsの実行時オプション設定
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 # ワーキングディレクトリの設定
 RUN mkdir /myapp
