@@ -1,26 +1,35 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row justify-content-center my-5">
+    <div class="col-md-5 shadow text-center px-0 rounded">
+      <h5 class="bg-light py-4 mb-4">ユーザーログイン</h5>
+      <p>
+        メールアドレスと<br>
+        パスワードを入力してください。
+      </p>
 
-<%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <%= form_with model: @user, class: "px-4 mb-4", url: user_session_path do |f| %>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control"%>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fa-solid fa-lock"></i></div>
+            </div>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control" %>
+          </div>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="actions mt-5">
+          <%= f.submit "サインイン", class: "btn btn-info btn-block btn-lg"%>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

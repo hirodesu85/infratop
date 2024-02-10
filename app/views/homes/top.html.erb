@@ -1,1 +1,15 @@
-<h1>Topページだよ</h1>
+<div class="container">
+  <div class="row mt-5 justify-content-center">
+    <div class="col-md-8">
+      <h1>welcome to <strong>Meshiterro</strong></h1>
+      <p>
+        In <strong>Meshiterro</strong>,
+      </p>
+      <p>
+        SNS community that indiscriminnately stimulates appetite among good citizens.
+      </p>
+      <%= link_to "Log in", new_user_session_path, class: "btn btn-info" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success ml-3" %>
+    </div>
+  </div>
+</div>
