@@ -3,7 +3,7 @@
     <div class="col-md-5 shadow text-center px-0 rounded">
       <h5 class="bg-light py-4 mb-4">ユーザーログイン</h5>
       <p>
-        メールアドレスと<br>
+        ユーザー名と<br>
         パスワードを入力してください。
       </p>
 
@@ -11,9 +11,9 @@
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-prepend">
-              <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
+              <div class="input-group-text"><i class="fas fa-user"></i></div>
             </div>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control"%>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ユーザー名", class: "form-control"%>
           </div>
         </div>
 
