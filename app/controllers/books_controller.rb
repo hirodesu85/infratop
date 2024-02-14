@@ -17,6 +17,8 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book.id)
     else
+      @user = current_user
+      @books = Book.all
       render 'books/index'
     end
   end
