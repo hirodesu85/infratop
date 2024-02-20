@@ -45,7 +45,7 @@
                   <%= link_to "新規登録", new_customer_registration_path, class: "nav-link text-dark" %>
                 </li>
                 <li class="nav-item border border-secondary rounded mx-3">
-                  <%= link_to "ログイン", customer_session_path, class: "nav-link text-dark" %>
+                  <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-dark" %>
                 </li>
               <% end %>
             </ul>
@@ -53,8 +53,8 @@
         </div>
       </nav>
     </header>
-    <main>
-      <div class="container-fluid border-top border-bottom border-dark">
+    <main class=" border-top border-bottom border-dark">
+      <div class="container my-4">
         <%= yield %>
       </div>
     </main>
