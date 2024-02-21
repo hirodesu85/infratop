@@ -1,2 +1,90 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+    <h4 class="d-inline-block bg-light px-3 py-2 mb-5">会員情報編集</h4>
+
+    <%= render "public/shared/error_messages", resource: @customer %>
+
+    <%= form_with model: @customer, url: update_customer_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <div class="form-group row">
+        <div class="col-12 col-md-3 col-form-label">
+          名前
+        </div>
+        <div class="col-3 col-md-1">
+          <%= f.label :last_name, "(姓)", class: "col-form-label" %>
+        </div>
+        <div class="col-9 col-md-3">
+          <%= f.text_field :last_name, class: "form-control", placeholder: "令和" %>
+        </div>
+        <div class="col-3 col-md-1">
+          <%= f.label :first_name, "(名)", class: "col-form-label" %>
+        </div>
+        <div class="col-9 col-md-3">
+          <%= f.text_field :first_name, class: "form-control", placeholder: "道子" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-12 col-md-3 col-form-label">
+          フリガナ
+        </div>
+        <div class="col-3 col-md-1">
+          <%= f.label :last_name_kana, "(セイ)", class: "col-form-label" %>
+        </div>
+        <div class="col-9 col-md-3">
+          <%= f.text_field :last_name_kana, class: "form-control", placeholder: "レイワ" %>
+        </div>
+        <div class="col-3 col-md-1">
+          <%= f.label :first_name_kana, "(メイ)", class: "col-form-label" %>
+        </div>
+        <div class="col-9 col-md-3">
+          <%= f.text_field :first_name_kana, class: "form-control", placeholder: "ミチコ" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-12 col-md-3">
+          <%= f.label :email, "メールアドレス", class: "col-form-label" %>
+        </div>
+        <div class="col-12 col-md-3 offset-md-1">
+          <%= f.email_field :email, class: "form-control", placeholder: "sample@example.com" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-12 col-md-3">
+          <%= f.label :postal_code, "郵便番号 (ハイフンなし)", class: "col-form-label" %>
+        </div>
+        <div class="col-12 col-md-3 offset-md-1">
+          <%= f.text_field :postal_code, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-12 col-md-3">
+          <%= f.label :address, "住所", class: "col-form-label" %>
+        </div>
+        <div class="col-12 col-md-7 offset-md-1">
+          <%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-12 col-md-3">
+          <%= f.label :telephone_number, "電話番号 (ハイフンなし)", class: "col-form-label" %>
+        </div>
+        <div class="col-12 col-md-3 offset-md-1">
+          <%= f.text_field :telephone_number, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-12 col-md-3 offset-md-4 mt-4">
+          <%= f.submit "編集内容を保存", class: "btn btn-success w-100" %>
+        </div>
+        <div class="col-12 col-md-3 offset-md-1 mt-4">
+          <%= link_to "退会する", unsubscribe_customers_path, class: "btn btn-danger w-100" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

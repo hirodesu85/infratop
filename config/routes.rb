@@ -9,6 +9,13 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'customers/my_page' => 'customers#show', as: :my_page
     get 'customers/information/edit' => 'customers#edit', as: :edit_customer
+    patch 'customers/information' => 'customers#update', as: :update_customer
+    resource :customers, only: [] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
   end
   
   # Admin側のルーティング
