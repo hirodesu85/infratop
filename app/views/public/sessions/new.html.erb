@@ -5,6 +5,12 @@
     <div class="ml-4">
       <h5 class="d-inline-block bg-light my-4 px-3 py-1">会員の方はこちらからログイン</h5>
 
+      <% if alert.present? %>
+        <div class="alert alert-danger">
+          <%= alert %>
+        </div>
+      <% end %>
+
       <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
         <div class="form-group row">
           <div class="col-12 col-md-3 offset-md-1">
