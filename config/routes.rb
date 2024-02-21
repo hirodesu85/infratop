@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     get 'customers/my_page' => 'customers#show', as: :my_page
+    get 'customers/information/edit' => 'customers#edit', as: :edit_customer
   end
   
   # Admin側のルーティング
