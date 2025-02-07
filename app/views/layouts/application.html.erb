@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myapp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/e922ba169d.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-light navbar-expand-lg my-3">
+        <div class="container-fluid">
+          <% if admin_signed_in? %>
+            <%= link_to "LOGO", admin_root_path, class: "navbar-brand border border-dark px-5" %>
+          <% else %>
+            <%= link_to "LOGO", root_path, class: "navbar-brand border border-dark px-5" %>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <% if admin_signed_in? %>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "商品一覧", admin_items_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "会員一覧", admin_customers_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "注文履歴一覧", root_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark" %>
+                </li>
+              <% elsif customer_signed_in? %>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "マイページ", my_page_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "商品一覧", items_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "カート", root_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-dark" %>
+                </li>
+              <% else %>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "About", about_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "商品一覧", items_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "新規登録", new_customer_registration_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item border border-secondary rounded mx-3 px-2">
+                  <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-dark" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class=" border-top border-bottom border-dark">
+      <div class="container my-4">
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>
